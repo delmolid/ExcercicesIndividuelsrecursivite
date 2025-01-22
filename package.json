@@ -1,0 +1,15 @@
+{
+  "name": "excercicesindividuelsrecursivite",
+  "version": "1.0.0",
+  "description": "README.md index.html script.js style.css",
+  "main": "data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+   
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC"
+}
+
+

@@ -5,31 +5,59 @@ function afficherDossier(dossierPrincipal) {
   return dossierPrincipal.nom;
 }
 
-console.log(afficherDossier(dossierPrincipal));
+// console.log(afficherDossier(dossierPrincipal));
 
-// Fonction récursive permettant d'afficher le contenu du dossier principale Ada
+
 function afficherDossierIteratif(dossierPrincipal) {
- let contenu = dossierPrincipal.contenu;
- console.log(contenu);
- let collectif = [];
- for (let tableau of contenu) {
-  console.log(tableau.nom) 
-    
-}
-}
-afficherDossierIteratif(dossierPrincipal)
-
-function afficherDossierRecursif(dossierPrincipal) {
-  if (dossierPrincipal.contenu.length === 0) {
-    console.log(dossierPrincipal.nom); 
-    afficherDossierRecursif(dossierPrincipal.contenu);
-  } else {
-      for (let i = 0; i < dossierPrincipal.contenu.length; i++) {
-        console.log(dossierPrincipal.contenu[i].nom);
-   }
-    }
-
-
+  if (dossierPrincipal.contenu) {
+    console.log(`📂 ${dossierPrincipal.nom}`);
   }
-  
-afficherDossierRecursif(dossierPrincipal);
+
+  if (dossierPrincipal.contenu && dossierPrincipal.contenu.length > 0) {
+    for (let i = 0; i < dossierPrincipal.contenu.length; i++) {
+      // Vérification de la structure des sous-dossiers et fichiers
+      if (dossierPrincipal.contenu[i].contenu) {
+        console.log(`📂 ${dossierPrincipal.contenu[i].nom}`); // Dossier avec contenu
+        // Exploration des sous-dossiers
+        for (let j = 0; j < dossierPrincipal.contenu[i].contenu.length; j++) {
+          if (dossierPrincipal.contenu[i].contenu[j].contenu) {
+            console.log(`📂 ${dossierPrincipal.contenu[i].contenu[j].nom}`);
+            // Exploration des sous-dossiers encore plus profonds
+            for (
+              let k = 0;
+              k < dossierPrincipal.contenu[i].contenu[j].contenu.length;
+              k++
+            ) {
+              console.log(
+                `📄 ${dossierPrincipal.contenu[i].contenu[j].contenu[k].nom}`
+              );
+            }
+          } else {
+            console.log(`📄 ${dossierPrincipal.contenu[i].contenu[j].nom}`); // Fichier dans un dossier sans sous-dossier
+          }
+        }
+      } else {
+        // Si cet élément n'a pas de sous-dossier ou de contenu, on le traite comme un fichier
+        console.log(`📄 ${dossierPrincipal.contenu[i].nom}`);
+      }
+    }
+  } else {
+    // Si aucun contenu, on considère qu'il s'agit d'un fichier (par exemple, `CV.pdf`)
+    console.log(`📄 ${dossierPrincipal.nom}`); // Fichier à la racine
+  }
+}
+// afficherDossierIteratif(dossierPrincipal);
+
+function affichageDossierRecursif(dossierPrincipal){ 
+if (dossierPrincipal.contenu) {
+  console.log(`📂 ${dossierPrincipal.nom}`)
+  if (dossierPrincipal?.contenu.length > 0) {
+    dossierPrincipal.contenu.forEach(element => afficherDossierIteratif(element));
+  }
+} else {
+  console.log(`📄 ${dossierPrincipal.nom}`)
+}
+}
+
+affichageDossierRecursif(dossierPrincipal)
+

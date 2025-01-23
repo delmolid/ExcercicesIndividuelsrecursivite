@@ -52,7 +52,7 @@ function affichageDossierRecursif(dossierPrincipal){
 if (dossierPrincipal.contenu) {
   console.log(`📂 ${dossierPrincipal.nom}`)
   if (dossierPrincipal?.contenu.length > 0) {
-    dossierPrincipal.contenu.forEach(element => afficherDossierIteratif(element));
+    dossierPrincipal.contenu.forEach(element => affichageDossierRecursif(element));
   }
 } else {
   console.log(`📄 ${dossierPrincipal.nom}`)

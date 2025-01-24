@@ -61,3 +61,32 @@ if (dossierPrincipal.contenu) {
 
 affichageDossierRecursif(dossierPrincipal)
 
+// Les fonctions afficherDossierIteratif et afficherDossierRecursif permettent d’explorer une structure hiérarchique de dossiers et fichiers. 
+// Cependant, elles utilisent deux approches fondamentalement différentes : l'itération et la récursivité. 
+// Voici une comparaison détaillée, avec les avantages et les inconvénients de chaque méthode.
+
+/* ---------------------------------------------------------------------
+   | Critère                   | Récursif                            | Itératif                             |
+   ---------------------------------------------------------------------
+   | Lisibilité                | Simple et reflète la structure      | Moins intuitif à cause de la gestion |
+   |                          | imbriquée.                          | manuelle.                            |
+   ---------------------------------------------------------------------
+   | Complexité du code        | Court et compact.                   | Plus long, nécessite une pile ou     |
+   |                          |                                     | une file manuelle.                   |
+   ---------------------------------------------------------------------
+   | Profondeur des dossiers   | Limité par la taille de la pile     | Pas de limite de profondeur.         |
+   |                          | d'appels.                          |                                      |
+   ---------------------------------------------------------------------
+   | Performance mémoire       | Peut consommer beaucoup de mémoire  | Plus stable sur des structures       |
+   |                          | pour une grande profondeur.         | profondes.                           |
+   ---------------------------------------------------------------------
+   | Contrôle de l'exploration | Suit un ordre naturel (profondeur). | Plus flexible : largeur, profondeur, |
+   |                          |                                     | etc.                                 |
+   ---------------------------------------------------------------------
+   | Débogage                  | Plus difficile à suivre             | Plus facile à suivre dans une boucle.|
+   |                          | (multiples appels).                 |                                      |
+   ---------------------------------------------------------------------
+   | Cas d'utilisation         | Idéal pour des structures modérées  | Préféré pour des structures          |
+   |                          | et lisibilité.                      | profondes ou complexes.              |
+   ---------------------------------------------------------------------
+*/
